@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: gbu-inventory-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: gbu_inventory
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres-seed.sql:/docker-entrypoint-initdb.d/seed.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - gbu-network
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gbu-inventory-api
+    environment:
+      APP_PORT: 8081
+      POSTGRES_DSN: postgres://postgres:postgres@postgres:5432/gbu_inventory?sslmode=disable
+    ports:
+      - "8081:8081"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - gbu-network
+
+volumes:
+  postgres_data:
+
+networks:
+  gbu-network:
+    driver: bridge

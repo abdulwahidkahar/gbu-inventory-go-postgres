@@ -1,0 +1,9 @@
+.git
+.gitignore
+README.md
+.env.example
+requests.http
+postman_collection.json
+screenshot-commands.md
+.DS_Store
+*.log
