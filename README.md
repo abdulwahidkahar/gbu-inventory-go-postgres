@@ -111,7 +111,29 @@ curl -X POST http://localhost:8081/api/inventory-items \
 }
 ```
 
-## 🛠️ Development Setup (Local)
+## � Screenshots - Postman Testing
+
+### List All Items
+
+![List Items](list.png)
+
+### Get Item by ID
+
+![Get by ID](getbyid.png)
+
+### Create Item
+
+![Create Item](create.png)
+
+### Update Item
+
+![Update Item](update.png)
+
+### Delete Item
+
+![Delete Item](delete.png)
+
+## �🛠️ Development Setup (Local)
 
 ### Prasyarat
 
