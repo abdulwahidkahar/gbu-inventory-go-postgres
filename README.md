@@ -16,7 +16,7 @@ API CRUD sederhana untuk manajemen data `inventory items` PT. Gemilang Bisnis Un
 
 ```bash
 # Clone dan masuk ke directory
-git clone <repo-url>
+git clone https://github.com/abdulwahidkahar/gbu-inventory-go-postgres.git
 cd gbu-inventory-go-postgres
 
 # Start services (PostgreSQL + Go API)
